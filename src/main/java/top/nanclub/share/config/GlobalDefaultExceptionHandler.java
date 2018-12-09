@@ -16,15 +16,18 @@ public class GlobalDefaultExceptionHandler {
      * 返回为String json时 返回String 并添加@ResponseBody
      * defaultExceptionHandler
      *
-     * @author Administrator
+     * @author 喃
      * @param req
      * @param e
      * @return
-     * @since JDK 1.7
+     * @since JDK 1.8
      */
     @ExceptionHandler(Exception.class)
     public ModelAndView defaultExceptionHandler(HttpServletRequest req, Exception e)
     {
+        System.out.println("*******************程序报错********************");
+        e.printStackTrace();
+        System.out.println("**********************************************");
         return new ModelAndView("error");
     }
 }
