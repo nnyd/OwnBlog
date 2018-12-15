@@ -7,13 +7,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class TestController {
 
-    @RequestMapping("/index")
-    public ModelAndView testIndex(){
-        return new ModelAndView("index");
-    }
-
-    @RequestMapping("/detail")
-    public ModelAndView testDetail(){
-        return new ModelAndView("article/detail");
-    }
+//    @RequestMapping("/mood")
+//    public ModelAndView testMood(){
+//        return new ModelAndView("base/mood");
+//    }
 }

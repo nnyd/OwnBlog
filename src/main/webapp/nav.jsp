@@ -1,19 +1,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <header class="navbar-wrapper">
     <div class="navbar navbar-fixed-top">
         <div class="container cl">
-            <a class="navbar-logo hidden-xs" href="http://www.wfyvv.com">
-                <img class="logo" src="/static/img/logo.png" alt="A喃博客" />
+            <a class="navbar-logo hidden-xs" href="/index.html">
+                <img class="logo" src="/static/img/logo.png" alt="A喃博客"/>
             </a>
             <a class="logo navbar-logo-m visible-xs" href="/">A喃博客</a>
-            <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:void(0);" onclick="showSide();">&#xe667;</a>
+            <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:void(0);"
+               onclick="showSide();">&#xe667;</a>
             <nav class="nav navbar-nav nav-collapse w_menu" role="navigation">
                 <ul class="cl">
-                    <li class="active"> <a href="index.html" data-hover="首页">首页</a> </li>
-                    <li> <a href="about.html" data-hover="关于我">关于我</a> </li>
-                    <li> <a href="mood.html" data-hover="碎言碎语">碎言碎语</a> </li>
-                    <li><a href="article.html" data-hover="学无止尽">学无止尽</a></li>
-                    <li> <a href="board.html" data-hover="留言板">留言板</a> </li>
+                    <li class="active"><a href="/index.html" data-hover="首页">首页</a></li>
+                    <li><a href="/about.html" data-hover="关于我">关于我</a></li>
+                    <li><a href="/mood.html" data-hover="碎言碎语">碎言碎语</a></li>
+                    <li><a href="/article" data-hover="学无止尽">学无止尽</a></li>
+                    <%--<li> <a href="board.html" data-hover="留言板">留言板</a> </li>--%>
                 </ul>
             </nav>
             <nav class="navbar-nav navbar-userbar hidden-xs hidden-sm " style="top: 0;">
@@ -23,7 +26,7 @@
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a href="/app/loginOut">退出</a></li>
                         </ul>-->
-                        <a href="/app/qq" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" ><img class="avatar size-S" src="/static/img/qq.jpg" title="登入">登入</a>
+                        <%--<a href="/app/qq" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" ><img class="avatar size-S" src="/static/img/qq.jpg" title="登入">登入</a>--%>
                     </li>
                 </ul>
             </nav>

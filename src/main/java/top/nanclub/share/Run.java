@@ -25,14 +25,14 @@ import java.util.List;
 public class Run extends WebMvcConfigurerAdapter {
 
     @Override
-    public void addViewControllers( ViewControllerRegistry registry ) {
+    public void addViewControllers(ViewControllerRegistry registry) {
 //        registry.addViewController( "/" ).setViewName( "index" );
-        registry.addRedirectViewController("/", "/index");
+        registry.addRedirectViewController("/", "/index.html");
 //        registry.addViewController("/toLogin").setViewName("account/login");
 //        registry.addViewController("/toRegist").setViewName("account/register");
 //        registry.addViewController("/myFeatures").setViewName("account/features");
-        registry.setOrder( Ordered.HIGHEST_PRECEDENCE );
-        super.addViewControllers( registry );
+        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+        super.addViewControllers(registry);
     }
 
     @Override
@@ -46,6 +46,7 @@ public class Run extends WebMvcConfigurerAdapter {
         fastConverter.setFastJsonConfig(fastJsonConfig);
         converters.add(fastConverter);
     }
+
     @Bean
     public MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();

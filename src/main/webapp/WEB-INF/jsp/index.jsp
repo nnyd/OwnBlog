@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <%@ include file="/head.jsp" %>
+    <%@ include file="/header.jsp" %>
 </head>
 <body>
 <%@ include file="/nav.jsp" %>
@@ -16,15 +16,18 @@
             <div class="slider">
                 <div class="bd">
                     <ul>
-                        <li><a href="#" target="_blank"><img src="/static/img/temp/banner1.jpg"></a></li>
-                        <li><a href="#" target="_blank"><img src="/static/img/temp/banner8.png"></a></li>
+                        <li><a href="/detail/1" target="_blank"><img src="/static/img/temp/banner1.jpg"></a></li>
+                        <li><a href="/detail/2" target="_blank"><img src="/static/img/temp/banner2.jpg"></a></li>
+                        <li><a href="/detail/7" target="_blank"><img src="/static/img/temp/banner3.jpg"></a></li>
                     </ul>
                 </div>
                 <ol class="hd cl dots">
                     <li>1</li>
                     <li>2</li>
+                    <li>3</li>
                 </ol>
                 <a class="slider-arrow prev" href="javascript:void(0)"></a>
+                <a class="slider-arrow next" href="javascript:void(0)"></a>
                 <a class="slider-arrow next" href="javascript:void(0)"></a>
             </div>
         </div>
@@ -55,48 +58,55 @@
                         &nbsp; &nbsp; &nbsp;域名本身的意义就是为了人们方便记忆才使用的，不然都用IP地址就好了。所以，网站域名一定要选择好记忆的。因为域名是
                     </div>
                 </li>--%>
-
-
-                <li class="index_arc_item no_pic">
-                    <h4 class="title"><a href="/article/5.html">个人博客应该选择什么样的域名和域名后缀</a></h4>
-                    <div class="date_hits">
-                        <span>阿喃</span>
-                        <span>2个月前</span>
-                        <span><a href="/article-lists/10.html">建站</a></span>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量">&#xe6c1;</i> 276 °</p>
-                        <p class="commonts"><i class="Hui-iconfont" title="点击量">&#xe622;</i> <span id="sourceId::105"
-                                                                                                   class="cy_cmt_count">20</span>
-                        </p>
-                    </div>
-                    <div class="desc">
-                        不论搭建什么样的网站，选择一个好的域名都是很有必要的，选择一个好的域名对网站的意义也是不言而喻的。每一个网站都有之对应的域名，就像人的名字一样。每个人都想自己有个好听的名字，网站也是一样。一个网站可以有多个域名，但是一个域名只能对应一个网站。&nbsp;一、域名要好记，方便输入&nbsp;
-                        &nbsp; &nbsp; &nbsp;域名本身的意义就是为了人们方便记忆才使用的，不然都用IP地址就好了。所以，网站域名一定要选择好记忆的。因为域名是
-                    </div>
-                </li>
-
-                <li class="index_arc_item">
-                    <a href="/article/4" class="pic">
-                        <img class="lazyload" data-original="/static/temp/art.jpg" alt="centos 6.5 nginx安装及配置">
-                    </a>
-                    <h4 class="title"><a href="/article/4">centos 6.5 nginx安装及配置</a></h4>
-                    <div class="date_hits">
-                        <span>阿喃</span>
-                        <span>2017-3-15</span>
-                        <span>
-	                <a href="/article?t=1">程序人生</a>
-	            </span>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量"></i> 13° </p>
-                        <p class="commonts"><i class="Hui-iconfont" title="评论"></i> <span class="cy_cmt_count">0</span>
-                        </p>
-                    </div>
-                    <div class="desc">linux环境中nginx安装及配置简要概述。。。</div>
-                </li>
+                <c:forEach items="${articles}" var="newItem">
+                    <c:if test="${newItem.imgAddress!=null}">
+                        <li class="index_arc_item">
+                            <a href="/detail/${newItem.aid}" class="pic">
+                                <img class="lazyload" data-original="${newItem.imgAddress}" alt="${newItem.title}">
+                            </a>
+                            <h4 class="title"><a href="/detail/${newItem.aid}">${newItem.title}</a></h4>
+                            <div class="date_hits">
+                                <span>${newItem.aname}</span>
+                                <span><fmt:formatDate value="${newItem.createTime}"
+                                                      pattern="yyyy-MM-dd hh:mm:ss"/></span>
+                                <span>
+                                     <c:forEach items="${newItem.labels}" var="label">
+                                         <a href="/article/${label}">${label}</a>
+                                     </c:forEach>
+                                </span>
+                                <p class="hits"><i class="Hui-iconfont" title="点击量"></i>${newItem.clicks}</p>
+                                    <%--<p class="commonts"><i class="Hui-iconfont" title="评论"></i> <span class="cy_cmt_count">0</span>
+                                    </p>--%>
+                            </div>
+                            <div class="desc">${newItem.explain}</div>
+                        </li>
+                    </c:if>
+                    <c:if test="${newItem.imgAddress==null}">
+                        <li class="index_arc_item no_pic">
+                            <h4 class="title"><a href="/detail/${newItem.aid}">${newItem.title}</a></h4>
+                            <div class="date_hits">
+                                <span>${newItem.aname}</span>
+                                <span><fmt:formatDate value="${newItem.createTime}"
+                                                      pattern="yyyy-MM-dd hh:mm:ss"/></span>
+                                <span>
+                                 <c:forEach items="${newItem.labels}" var="label">
+                                     <a href="/article/${label}">${label}</a>
+                                 </c:forEach>
+                                </span>
+                                <p class="hits"><i class="Hui-iconfont" title="点击量">&#xe6c1;</i>${newItem.clicks}</p>
+                                    <%--<p class="commonts"><i class="Hui-iconfont" title="评论">&#xe622;</i> <span id="sourceId::105"class="cy_cmt_count">20</span>
+                                    </p>--%>
+                            </div>
+                            <div class="desc">${newItem.explain}</div>
+                        </li>
+                    </c:if>
+                </c:forEach>
 
             </ul>
-            <div class="text-c mb-20" id="moreBlog">
+            <%--<div class="text-c mb-20" id="moreBlog">
                 <a class="btn  radius btn-block " href="javascript:;" onclick="moreBlog();">点击加载更多</a>
                 <a class="btn  radius btn-block hidden" href="javascript:;">加载中……</a>
-            </div>
+            </div>--%>
         </div>
     </div>
 
@@ -128,7 +138,8 @@
                 <ul class="index_recd">
                     <li class="index_recd_item"><i class="Hui-iconfont">&#xe653;</i>姓名：楠</li>
                     <li class="index_recd_item"><i class="Hui-iconfont">&#xe70d;</i>职业：JavaWeb开发</li>
-                    <li class="index_recd_item"><i class="Hui-iconfont">&#xe63b;</i>邮箱：<a href="mailto:wfyv@qq.com">wfyv@qq.com</a>
+                    <li class="index_recd_item"><i class="Hui-iconfont">&#xe63b;</i>邮箱：<a
+                            href="mailto:nanclub0541@outlook.com">nanclub0541@outlook.com</a>
                     </li>
                     <li class="index_recd_item"><i class="Hui-iconfont">&#xe671;</i>定位：北京</li>
                 </ul>
@@ -137,17 +148,17 @@
 
 
         <!--热门推荐-->
-        <div class="bg-fff box-shadow radius mb-20">
+        <%--<div class="bg-fff box-shadow radius mb-20">
             <div class="tab-category">
                 <a href=""><strong>热门推荐</strong></a>
             </div>
             <div class="tab-category-item">
                 <ul class="index_recd">
-                    <%--推荐标签--%>
-                    <%--<li>
+                    &lt;%&ndash;推荐标签&ndash;%&gt;
+                    &lt;%&ndash;<li>
                         <a href="#">阻止a标签href默认跳转事件</a>
                         <p class="hits"><i class="Hui-iconfont" title="点击量">&#xe622;</i> 276 </p>
-                    </li>--%>
+                    </li>&ndash;%&gt;
                     <li>
                         <a href="#">PHP面试题汇总</a>
                         <p class="hits"><i class="Hui-iconfont" title="点击量">&#xe622;</i> 276 </p>
@@ -166,7 +177,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div>--%>
 
         <!--点击排行-->
         <div class="bg-fff box-shadow radius mb-20">
@@ -175,34 +186,12 @@
             </div>
             <div class="tab-category-item">
                 <ul class="index_recd clickTop">
-                    <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量">&#xe6c1;</i> 276° </p>
-                    </li>
-                    <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量">&#xe6c1;</i> 276° </p>
-                    </li>
-                    <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量">&#xe6c1;</i> 276° </p>
-                    </li>
-                    <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量">&#xe6c1;</i> 276° </p>
-                    </li>
-                    <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量">&#xe6c1;</i> 276° </p>
-                    </li>
-                    <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量">&#xe6c1;</i> 276° </p>
-                    </li>
-                    <li>
-                        <a href="#">AJAX的刷新和前进后退问题解决</a>
-                        <p class="hits"><i class="Hui-iconfont" title="点击量">&#xe6c1;</i> 276° </p>
-                    </li>
+                    <c:forEach items="${top}" var="topItem">
+                        <li>
+                            <a href="/detail/${topItem.aid}">${topItem.title}</a>
+                            <p class="hits"><i class="Hui-iconfont" title="点击量">&#xe6c1;</i>${topItem.clicks}</p>
+                        </li>
+                    </c:forEach>
                 </ul>
             </div>
         </div>
@@ -217,17 +206,17 @@
             </div>
         </div>--%>
         <!--图片-->
-        <div class="bg-fff box-shadow radius mb-20">
-            <div class="tab-category">
-                <a href=""><strong>扫我关注</strong></a>
-            </div>
-            <div class="tab-category-item">
-                <img data-original="/static/temp/gg.jpg" class="img-responsive lazyload" alt="响应式图片">
-            </div>
-        </div>
+        <%-- <div class="bg-fff box-shadow radius mb-20">
+             <div class="tab-category">
+                 <a href=""><strong>扫我关注</strong></a>
+             </div>
+             <div class="tab-category-item">
+                 <img data-original="/static/temp/gg.jpg" class="img-responsive lazyload" alt="响应式图片">
+             </div>
+         </div>--%>
 
         <!--友情链接-->
-        <div class="bg-fff box-shadow radius mb-20">
+        <%--<div class="bg-fff box-shadow radius mb-20">
             <div class="tab-category">
                 <a href=""><strong>隔壁邻居</strong></a>
             </div>
@@ -238,7 +227,7 @@
                 <span><i class="Hui-iconfont">&#xe6f1;</i><a href="#" class="btn-link">慕课网</a></span>
                 <span><i class="Hui-iconfont">&#xe6f1;</i><a href="#" class="btn-link">h-ui</a></span>
             </div>
-        </div>
+        </div>--%>
         <%--<!--最近访客-->
         <div class="bg-fff box-shadow radius mb-20">
             <div class="tab-category">
@@ -293,13 +282,9 @@
     </div>
 
 </section>
-<footer class="footer mt-20">
-    <div class="container-fluid" id="foot">
-        <p>Copyright &copy; 2016-2017 www.wfyvv.com <br>
-            <a href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备17002922号</a><br>
-        </p>
-    </div>
-</footer>
+
+<%--footer--%>
+<%@ include file="/footer.jsp" %>
 
 
 <script>

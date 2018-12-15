@@ -1,0 +1,47 @@
+Article         文章表
+    aid             id
+    title           标题
+    content         内容
+    explain         说明
+    label           标签
+    createTime      时间
+    accid           创建者
+    clicks          点击量
+    imgAddress      配图多个配图 按顺序:::::隔开（5个:分隔）
+
+Comment         评论
+    cid             id
+    aid             文章id
+    content         评论内容
+    createTime      评论时间
+    pid             评论父id
+    accid           评论者
+
+Label           标签
+    lid             id
+    lname           标签名
+    typeId          分类
+    enable          是否删除
+
+LabelType       标签分类
+    tid             id
+    tname           分类名
+
+Record          记录表(通知、碎言碎语)
+    rid             id
+    accid
+    content         记录内容
+    createTime      记录时间
+
+Account         账户
+    accid           id
+    accNum          账号
+    aname           名
+    logPassword     登录密码
+    realPassword    实际密码
+    phone           手机号
+    mailAddress     邮箱地址
+    qq              QQ
+    weChat          微信
+    createTime      创建时间
+

@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 
 //@Configuration
 public class ErrorConfig {
-//    @Bean
+    //    @Bean
     public EmbeddedServletContainerCustomizer containerCustomizer() {
         return (container) -> {
             String err404Address = "/404.html";

@@ -1,7 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE HTML>
 <html>
 <head>
-    <%@ include file="/head.jsp" %>
+    <%@ include file="/header.jsp" %>
 </head>
 <body>
 <%@ include file="/nav.jsp" %>
@@ -21,30 +22,28 @@
             </ul>
             <h2>About my blog</h2>
             <ul>
-                <p>域 名：wfyvv.com 注册于2017年02月02日</p>
-                <p>服务器：腾讯云服务器 ，于2017年02月23日完成备案</p>
-                <p>备案号：皖ICP备17002922号</p>
+                <p>域 名：nanclub.top 注册于2018年11月03日</p>
+                <p>服务器：百度云服务器 ，于2018年12月**日完成备案</p>
+                <p>备案号：京ICP备18058367号</p>
                 <p>本站定位为IT技术博客站，博客内容主要涉及编程语言、前端开发、服务端开发及一些热门技术等方面，同时分享实用的学习和开发资料。</p>
             </ul>
             <h2>Contact me</h2>
             <ul>
                 <p><i class="Hui-iconfont">&#xe67b;</i>qq : *********暂不公开 : (</p>
-                <p><i class="Hui-iconfont">&#xe6d1;</i>git：<a href="https://git.oschina.net/wilco" class="blog_link">https://git.oschina.net/wilco</a>
+                <p><i class="Hui-iconfont">&#xe6d1;</i>github：<a href="https://github.com/nnyd" class="blog_link">https://github.com/nnyd</a>
                 </p>
-                <p><i class="Hui-iconfont">&#xe63b;</i>email : <a class="blog_link" href="mailto:wfyv@qq.com">wfyv@qq.com</a>
+                <p><i class="Hui-iconfont">&#xe63b;</i>email : <a class="blog_link"
+                                                                  href="mailto:nanclub0541@outlook.com">nanclub0541@outlook.com</a>
                 </p>
             </ul>
         </div>
 
     </div>
 </section>
-<footer class="footer mt-20">
-    <div class="container-fluid" id="foot">
-        <p>Copyright &copy; 2016-2017 www.wfyvv.com <br>
-            <a href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP备17002922号</a><br>
-        </p>
-    </div>
-</footer>
+
+
+<%--footer--%>
+<%@ include file="/footer.jsp" %>
 
 <script> $(function () {
     $(window).on("scroll", backToTopFun);
